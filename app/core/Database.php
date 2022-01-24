@@ -12,7 +12,7 @@ class Database{
     
     public function __construct(){
 		// data source name
-		$dsn = "mysql:host=". $this->host ."dbname=". $this->db_name;
+		$dsn = 'mysql:host=' . $this->host .';dbname='. $this->db_name;
 
         $option = [
             PDO::ATTR_PERSISTENT => true,
@@ -28,7 +28,6 @@ class Database{
     
     public function query($query){
         $this->stmt = $this->dbh->prepare($query);
-        prepare($query);
     }
 
     
@@ -38,7 +37,7 @@ class Database{
                 case is_int($value):
                     $type = PDO::PARAM_INT;
                     break;
-                    case is_bool($value):
+                case is_bool($value):
                     $type = PDO::PARAM_BOOL;
                     break;
                 case is_null($value):
@@ -67,6 +66,10 @@ class Database{
     {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function rowCount(){
+        return $this->stmt->rowCount();
     }
     
     

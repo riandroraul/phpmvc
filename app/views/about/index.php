@@ -6,3 +6,4 @@
     berusia <?= $data['umur']  ?> tahun.</p>
     
 </div>
+
